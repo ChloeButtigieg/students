@@ -61,15 +61,15 @@ public class Grade {
    */
   public static Grade averageGrade(List<Grade> grades){
     double sum = 0;
-    int nbGrabePresent = 0;
+    int nbGradePresent = 0;
     for (Grade grade : grades) {
       if (grade.isPresent) {
         sum = sum + grade.getValue();
-        nbGrabePresent = nbGrabePresent + 1;
+        nbGradePresent = nbGradePresent + 1;
       }
     }
-    if (nbGrabePresent > 0) {
-      return new Grade(sum / nbGrabePresent);
+    if (nbGradePresent > 0) {
+      return new Grade(sum / nbGradePresent);
     }
     else {
       return new Grade("ABS");
