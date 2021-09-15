@@ -55,4 +55,14 @@ public class Cohort {
   public String toString() {
     return name;
   }
+
+  public int nbStudentValidate() {
+    int nbStudent = 0;
+    for (Student student : students) {
+      if (student.averageGrade().getValue() >= 10.0) {
+        nbStudent = nbStudent + 1;
+      }
+    }
+    return nbStudent;
+  }
 }
