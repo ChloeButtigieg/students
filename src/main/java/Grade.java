@@ -28,8 +28,7 @@ public class Grade {
    */
 
   public double getValue() {
-    // TODO : change code
-    return 0.;
+    return value;
   }
 
   /**
@@ -38,8 +37,7 @@ public class Grade {
    */
   @Override
   public String toString() {
-    // TODO : change code
-    return null;
+    return this.value + "/" + MAXIMUM_GRADE;
   }
 
   /**
@@ -50,8 +48,11 @@ public class Grade {
    * @return a grade corresponding to the mean of grade in {@code grades}
    */
   public static Grade averageGrade(List<Grade> grades){
-    // TODO : change code
-    return null;
+    double sum = 0;
+    for (Grade grade : grades) {
+      sum = sum + grade.getValue();
+    }
+    return new Grade(sum / grades.size());
   }
 
   /**
