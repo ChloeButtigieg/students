@@ -10,6 +10,7 @@ public class Grade {
    */
   private static final int MAXIMUM_GRADE = 20;
   private final double value;
+  private final boolean isPresent;
 
   /**
    * Constructs a grade with a value equals to the specified {@code value}.
@@ -19,6 +20,12 @@ public class Grade {
 
   public Grade(double value) {
     this.value = value;
+    this.isPresent = true;
+  }
+
+  public Grade(String abs) {
+    this.value = 0.0;
+    this.isPresent = false;
   }
 
   /**
@@ -37,7 +44,12 @@ public class Grade {
    */
   @Override
   public String toString() {
-    return this.value + "/" + MAXIMUM_GRADE;
+    if (isPresent) {
+      return this.value + "/" + MAXIMUM_GRADE;
+    }
+    else {
+      return "ABS";
+    }
   }
 
   /**
@@ -49,10 +61,19 @@ public class Grade {
    */
   public static Grade averageGrade(List<Grade> grades){
     double sum = 0;
+    int nbGrabePresent = 0;
     for (Grade grade : grades) {
-      sum = sum + grade.getValue();
+      if (grade.isPresent) {
+        sum = sum + grade.getValue();
+        nbGrabePresent = nbGrabePresent + 1;
+      }
     }
-    return new Grade(sum / grades.size());
+    if (nbGrabePresent > 0) {
+      return new Grade(sum / nbGrabePresent);
+    }
+    else {
+      return new Grade("ABS");
+    }
   }
 
   /**
